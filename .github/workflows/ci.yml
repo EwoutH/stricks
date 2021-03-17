@@ -1,9 +1,23 @@
 on: [push, pull_request]
 
 jobs:
-  build:
+  linux-make:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - run: make
     - run: make check
+
+  linux-cmake:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: cmake .
+
+  windows-cmake:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: cmake .
+    - uses: microsoft/setup-msbuild@v1
+    - run: msbuild
