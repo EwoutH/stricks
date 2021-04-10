@@ -7,11 +7,9 @@ jobs:
       fail-fast: false
       matrix:
         CC: [gcc, clang]
-    env:
-      CC: ${{ matrix.CC }}
 
     steps:
     - uses: actions/checkout@v2
-    - run: make -n
-    - run: make
-    - run: make check
+    - run: make -n CC=${{ matrix.CC }}
+    - run: make CC=${{ matrix.CC }}
+    - run: make check CC=${{ matrix.CC }}
