@@ -4,9 +4,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         CC: [gcc, clang]
         STD: [c99, c11, c17]
+        OPTIM: [-O0]
         include:
           - CC: gcc
             STD: c17
