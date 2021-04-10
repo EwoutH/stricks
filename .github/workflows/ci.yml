@@ -3,7 +3,13 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        CC: [gcc, clang]
+
     steps:
     - uses: actions/checkout@v2
+    - run: make -n
     - run: make
     - run: make check
