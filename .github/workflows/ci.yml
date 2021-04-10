@@ -7,9 +7,10 @@ jobs:
       fail-fast: false
       matrix:
         CC: [gcc, clang]
+        STD: [C99, C11, C17]
 
     steps:
     - uses: actions/checkout@v2
-    - run: make -n CC=${{ matrix.CC }}
-    - run: make CC=${{ matrix.CC }}
-    - run: make check CC=${{ matrix.CC }}
+    - run: make -v CC=${{ matrix.CC }} STD=${{ matrix.STD }}
+    - run: make CC=${{ matrix.CC }} STD=${{ matrix.STD }}
+    - run: make check CC=${{ matrix.CC }} STD=${{ matrix.STD }}
