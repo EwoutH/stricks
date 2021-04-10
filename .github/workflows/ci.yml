@@ -8,9 +8,11 @@ jobs:
       matrix:
         CC: [gcc, clang]
         STD: [c99, c11, c17]
+    env:
+      make_options: 'CC=${{ matrix.CC }} STD=${{ matrix.STD }}'
 
     steps:
     - uses: actions/checkout@v2
-    - run: make -v CC=${{ matrix.CC }} STD=${{ matrix.STD }}
-    - run: make CC=${{ matrix.CC }} STD=${{ matrix.STD }}
-    - run: make check CC=${{ matrix.CC }} STD=${{ matrix.STD }}
+    - run: make -n $make_options
+    - run: make $make_options
+    - run: make check $make_options
