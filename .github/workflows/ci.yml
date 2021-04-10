@@ -10,11 +10,11 @@ jobs:
         STD: [c99, c11, c17]
         include:
           - CC: gcc
-            STD: c17
-            OPTIM: -O3
+            STD: 'c17'
+            OPTIM: '-O3'
           - CC: clang
-            STD: c17
-            OPTIM: -O3
+            STD: 'c17'
+            OPTIM: '-O3'
 
     env:
       make_options: 'CC=${{ matrix.CC }} STD=${{ matrix.STD }} OPTIM=${{ matrix.OPTIM }}' 
